@@ -1,5 +1,5 @@
 class QuestionsController < ApplicationController
-  before_action :set_question, only: [:show, :edit, :update, :destroy]
+  before_action :set_question, only: [:show, :edit, :update, :destroy, :answer]
 
   # GET /questions
   # GET /questions.json
@@ -60,6 +60,18 @@ class QuestionsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to questions_url, notice: 'Question was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+
+  def answer
+    @question.answered_at = Time.now
+    
+    respond_to do |format|
+      if @question.save
+        format.js { }
+      else
+        format.js { render :status => 400 }
+      end
     end
   end
 
