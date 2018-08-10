@@ -41,6 +41,9 @@ gem 'bootsnap', '>= 1.1.0', require: false
 #  Materialize Sass version for Rails Asset Pipeline http://materialize.labs.my/
 gem 'materialize-sass', '~> 1.0.0.rc2'
 
+# Add Google Material Icons in your Rails projects easily. It is a library with +900 icons ;)
+gem 'material_icons' 
+
 source 'https://rails-assets.org' do
   gem 'rails-assets-toastr'
   gem 'rails-assets-notifyjs'
