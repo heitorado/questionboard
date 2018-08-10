@@ -26,9 +26,8 @@ document.body.addEventListener('ajax:success', function(event) {
     toastr["success"]("Message sent!");
 
     // Erase text input field
-    $('#question-text-input').val('');
-
-    console.log('sucesso!')
+    $('.question-textarea').val('');
+    M.textareaAutoResize($('.question-textarea'));
 });
 
 document.body.addEventListener('ajax:error', function(event) {

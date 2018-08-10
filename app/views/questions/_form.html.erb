@@ -1,22 +1,42 @@
-<%= form_with(model: question) do |form| %>
-  <% if question.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(question.errors.count, "error") %> prohibited this question from being saved:</h2>
+  <div class="row">
+    <%= form_with(model: question, class: "col s12") do |form| %>
+      <% if question.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(question.errors.count, "error") %> prohibited this question from being saved:</h2>
 
-      <ul>
-      <% question.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+          <ul>
+          <% question.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
       <% end %>
-      </ul>
-    </div>
+
+      <div class="row">
+        <div class="input-field col s12 m10">
+          <i class="material-icons prefix">mode_edit</i>
+          <textarea class="materialize-textarea question-textarea" id="message" placeholder="Type in your question! :)" name="question[text]"></textarea>
+          <label for="message" class="active">Message</label> 
+        </div>
+
+        <div class="actions col s12 m2">
+          <button class="waves-effect waves-light btn-large waves-input-wrapper" type="submit" name="commit" value="Send!">
+            Send!
+            <i class="material-icons right">send</i>
+          </button>
+        </div>
+      </div>
+
+      <div class="row">
+        
+      </div>
+    </form>
+  </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :text %>
-    <%= form.text_field :text, id: "question-text-input" %>
-  </div>
 
-  <div class="actions">
-    <%= form.submit class: "waves-effect waves-light btn-large" %>
-  </div>
-<% end %>
+
+<div class="input-field d iv">
+  <textarea id="message" class="materialize-textarea" style="height: 113px;"></textarea>
+  <label for="message" class="active">Message</label>
+</div>

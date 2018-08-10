@@ -11,10 +11,11 @@
 // about supported directives.
 //
 //= require jquery
-//= require materialize-sprockets
+//= require jquery_ujs
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
 //= require toastr
 //= require notifyjs
+//= require materialize-sprockets
 //= require_tree .
