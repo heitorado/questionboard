@@ -17,13 +17,23 @@ toastr.options = {
     "hideMethod": "fadeOut"
   }
 
+toastBeingDisplayed = false;
+
 
 document.body.addEventListener('ajax:success', function(event) {
     var detail = event.detail;
     var data = detail[0], status = detail[1], xhr = detail[2];
 
     // Display toastr success notification
-    toastr["success"]("Message sent!");
+    if(!toastBeingDisplayed)
+    {   
+        toastBeingDisplayed = true;
+        M.toast({
+                html: "Message sent!",
+                completeCallback: function(){ toastBeingDisplayed = false; }
+                });
+    }
+    //toastr["success"]("Message sent!");
 
     // Erase text input field
     $('.question-textarea').val('');
@@ -41,10 +51,27 @@ document.body.addEventListener('ajax:error', function(event) {
         <% triggered_errors = j @question.errors.full_messages.join('; ') %>
         
         // Display toastr success notification with the list of errors
-        toastr["error"]("Error(s) while sending your message: <%= j(triggered_errors) %> ");
+        //toastr["error"]("Error(s) while sending your message: <%= j(triggered_errors) %> ");
+        if(!toastBeingDisplayed)
+        {
+            toastBeingDisplayed = true;
+            M.toast({
+                    html: "Error(s) while sending your message: <%= j(triggered_errors) %> ",
+                    completeCallback: function(){ toastBeingDisplayed = false; }
+                    });
+
+        }
 
     <% elsif @question.errors.empty? %>
-        toastr["error"]("Server error! Please try again later, sorry! :(");
+        if(!toastBeingDisplayed)
+        {
+            toastBeingDisplayed = true;
+            M.toast({
+                    html: "Server error! Please try again later, sorry! :("
+                    });
+        }    
+        
+        // toastr["error"]("Server error! Please try again later, sorry! :(");
     <% end %>
 
 });
