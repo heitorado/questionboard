@@ -3,9 +3,20 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 body {
+    color: white;
+
     background-image: url("main-background.png");
     background-repeat: no-repeat;
     background-size: 100%;
+}
+
+#message {
+    color: white;
+    height: 115px;
+}
+
+#send-question-button{
+    margin-top: 40px;
 }
 
 div.toast-text{
