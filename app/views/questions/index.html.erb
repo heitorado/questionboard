@@ -4,13 +4,35 @@
 
     <h1>Questions</h1>
 
-    <table>
+    <% @questions.each do |question| %>
+
+      <div class="col s12 m6">
+        <div class="card" id=<%= "#{question.id}" %>>
+          <div class="card-content">
+            <span class="card-title">Card Title</span>
+            <p><%= question.text %></p>
+          </div>
+          <div class="card-image">
+            <%= link_to question, method: :delete, class: "btn-floating halfway-fab waves-effect waves-light red", id: "delete-button",data: { confirm: 'Are you sure?' } do %>
+              <i class="material-icons">delete_forever</i>
+            <% end %>
+            
+            <%= link_to(answer_question_path(question), :remote => true, class: "btn-floating halfway-fab waves-effect waves-light green", id: "answer-button") do %>
+              <i class="material-icons">done</i>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+
+    
+    <table class="striped" id="questions-table">
       <thead>
         <tr>
           <th>Text</th>
           <th>Answered at</th>
           <th>Answered by</th>
-          <th colspan="3"></th>
+          <th colspan="3" id="table-actions-header"></th>
         </tr>
       </thead>
 
@@ -18,7 +40,13 @@
         <% @questions.each do |question| %>
           <tr id=<%= "#{question.id}" %> >
             <td><%= question.text %></td>
-            <td class="answered-at"><%= question.answered_at %></td>
+            <td class="answered-at">
+              <% unless question.answered_at.nil? %>
+                <%= question.answered_at.to_date %>
+              <% else %>
+                <%= "Not answered yet!" %>
+              <% end %>
+            </td>
             <td><%= question.user_id %></td>
             <td><%= link_to 'Answer', answer_question_path(question), :remote => true %></td>
             <td><%= link_to 'Edit', edit_question_path(question) %></td>

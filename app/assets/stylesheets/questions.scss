@@ -1,3 +1,16 @@
 // Place all the styles related to the Questions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#questions-table{
+    table-layout: fixed;
+    word-wrap: break-word;
+}
+
+#table-actions-header{
+    width: 200px;
+}
+
+#delete-button{
+    margin-right: 60px;
+}
