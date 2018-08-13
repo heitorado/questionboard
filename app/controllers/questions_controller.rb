@@ -7,6 +7,14 @@ class QuestionsController < ApplicationController
     @questions = Question.all
   end
 
+  def pending
+    @questions = Question.where(answered_at: nil)
+  end
+
+  def answered
+    @questions = Question.where.not(answered_at: nil)
+  end
+
   # GET /questions/1
   # GET /questions/1.json
   def show

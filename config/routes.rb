@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   get 'home/index'
+  get 'questions/answered' => 'questions#answered'
+  get 'questions/pending'=> 'questions#pending'
   resources :users
   resources :questions do
     member do
