@@ -10,42 +10,44 @@
   </head>
 
   <body>
-    <nav>
-      <div class="container"><div class="row">
-      <div class="nav-wrapper">
-        <%= link_to 'IP Temple', home_index_path, class: "brand-logo" %>
-        <a href="" data-target="mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-        <ul class="right hide-on-med-and-down">
-          <li>
-            <%= link_to 'All Questions', questions_path %>
-          </li>
-          <li>
-            <%= link_to 'Answered', questions_answered_path %>
-          </li>
-          <li>
-            <%= link_to 'Pending', questions_pending_path %>
-          </li>
-        </ul>
-      </div>
-    </nav>
+    <main>
+      <nav>
+        <div class="container"><div class="row">
+        <div class="nav-wrapper">
+          <%= link_to 'IP Temple', home_index_path, class: "brand-logo" %>
+          <a href="" data-target="mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+          <ul class="right hide-on-med-and-down">
+            <li>
+              <%= link_to 'All Questions', questions_path %>
+            </li>
+            <li>
+              <%= link_to 'Answered', questions_answered_path %>
+            </li>
+            <li>
+              <%= link_to 'Pending', questions_pending_path %>
+            </li>
+          </ul>
+        </div>
+      </nav>
 
-    <ul class="sidenav" id="mobile">
-      <li>
-        <%= link_to 'All Questions', questions_path %>
-      </li>
-      <li>
-        <%= link_to 'Answered', questions_answered_path %>
-      </li>
-      <li>
-        <%= link_to 'Pending', questions_pending_path %>
-      </li>
-    </ul>
-    </div></div>
+      <ul class="sidenav" id="mobile">
+        <li>
+          <%= link_to 'All Questions', questions_path %>
+        </li>
+        <li>
+          <%= link_to 'Answered', questions_answered_path %>
+        </li>
+        <li>
+          <%= link_to 'Pending', questions_pending_path %>
+        </li>
+      </ul>
+      </div></div>
 
-    <div id="main">
-      <div class="container">
-        <%= yield %>
+      <div id="main">
+        <div class="container">
+          <%= yield %>
+        </div>
       </div>
-    </div>
-  </body>
+    </main>
+  </body>  
 </html>
