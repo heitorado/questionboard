@@ -29,7 +29,8 @@ document.body.addEventListener('ajax:success', function(event) {
     {   
         toastBeingDisplayed = true;
         M.toast({
-                html: "Message sent!",
+                html: "<i class=\"medium material-icons\">check</i><p>Message sent!</p>",
+                classes: "toast-text",
                 completeCallback: function(){ toastBeingDisplayed = false; }
                 });
     }
@@ -56,7 +57,8 @@ document.body.addEventListener('ajax:error', function(event) {
         {
             toastBeingDisplayed = true;
             M.toast({
-                    html: "Error(s) while sending your message: <%= j(triggered_errors) %> ",
+                    html: "<i class=\"medium material-icons\">error</i><p>Error(s) while sending your message: <%= j(triggered_errors) %> </p>",
+                    classes: "toast-text",
                     completeCallback: function(){ toastBeingDisplayed = false; }
                     });
 
@@ -67,7 +69,8 @@ document.body.addEventListener('ajax:error', function(event) {
         {
             toastBeingDisplayed = true;
             M.toast({
-                    html: "Server error! Please try again later, sorry! :("
+                    html: "<i class=\"medium material-icons\">error</i><p>Server error! Please try again later, sorry! :(</p>",
+                    classes: "toast-text"
                     });
         }    
         
