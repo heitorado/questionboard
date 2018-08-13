@@ -4,27 +4,8 @@
 
     <h1>All Questions</h1>
 
-    <% @questions.each do |question| %>
-      <div class="col s12 m6">
-        <div class="card" id=<%= "#{question.id}" %>>
-          <div class="card-content">
-            <span class="card-title">Card Title</span>
-            <p><%= question.text %></p>
-          </div>
-          <div class="card-image">
-            <%= link_to question, method: :delete, class: "btn-floating halfway-fab waves-effect waves-light red", id: "delete-button",data: { confirm: 'Are you sure?' } do %>
-              <i class="material-icons">delete_forever</i>
-            <% end %>
-            
-            <%= link_to(answer_question_path(question), :remote => true, class: "btn-floating halfway-fab waves-effect waves-light green", id: "answer-button") do %>
-              <i class="material-icons">done</i>
-            <% end %>
-          </div>
-        </div>
-      </div>
-    <% end %>
+    <%= render partial: "questions/shared/cards", locals: { questions: @questions } %>
 
-    
     <table class="striped" id="questions-table">
       <thead>
         <tr>
