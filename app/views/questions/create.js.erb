@@ -17,12 +17,14 @@ toastr.options = {
     "hideMethod": "fadeOut"
   }
 
-toastBeingDisplayed = false;
+var toastBeingDisplayed = false;
+var user_input;
 
 
 $('#send-question-button').click( function(){
     // Stores the user input on a variable
-    user_input = $('.question-textarea').val()
+    user_input = $('.question-textarea').val();
+    $(this).addClass( 'disabled' );
 });
 
 
@@ -44,6 +46,10 @@ document.body.addEventListener('ajax:success', function(event) {
     // Erase text input field
     $('.question-textarea').val('');
     M.textareaAutoResize($('.question-textarea'));
+
+    // enable button again
+    $('#send-question-button').removeClass( 'disabled' );
+
 });
 
 document.body.addEventListener('ajax:error', function(event) {
@@ -51,6 +57,7 @@ document.body.addEventListener('ajax:error', function(event) {
     var data = detail[0], status = detail[1], xhr = detail[2];
 
     // Recover a list of the errors that prevented the message from being sent, if any
+    <% @question.valid? %>
     <% if @question.errors.any? %>
 
         // Concatenate all error messages
@@ -86,4 +93,6 @@ document.body.addEventListener('ajax:error', function(event) {
     $('.question-textarea').val(user_input);
     M.textareaAutoResize($('.question-textarea'));
 
+    // enable button again
+    $('#send-question-button').removeClass( 'disabled' );
 });
