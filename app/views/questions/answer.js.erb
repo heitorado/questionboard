@@ -25,5 +25,5 @@ document.body.addEventListener('ajax:success', function(event) {
     // Display toastr success notification
     toastr["success"]("Marked as answered!");
 
-    console.log( $('#<%= params[:id] %>').children('.answered-at').html('<%= Question.find(params[:id]).answered_at %>') )
+    console.log( $('#<%= params[:id] %>').children('.answered-at').html('<%= Question.find(params[:id]).answered_at.to_date %>') )
 });
