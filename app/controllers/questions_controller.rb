@@ -4,15 +4,15 @@ class QuestionsController < ApplicationController
   # GET /questions
   # GET /questions.json
   def index
-    @questions = Question.all
+    @questions = Question.all.order(created_at: :desc)
   end
 
   def pending
-    @questions = Question.where(answered_at: nil)
+    @questions = Question.where(answered_at: nil).order(created_at: :desc)
   end
 
   def answered
-    @questions = Question.where.not(answered_at: nil)
+    @questions = Question.where.not(answered_at: nil).order(created_at: :desc)
   end
 
   # GET /questions/1
