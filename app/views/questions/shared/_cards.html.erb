@@ -15,7 +15,7 @@
                         <i> <%= "Answered at: #{question.answered_at.to_time.strftime("%d/%m/%Y")}" %> </i>
                     </div>
                 <% end  %>
-                <% unless question.user_id.nil? %>
+                <% unless question.user.nil? %>
                     <div class="chip">
                         <i> <%= "Answered by: #{question.user.name}" %> </i>
                     </div>

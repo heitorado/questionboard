@@ -17,31 +17,85 @@
           <%= link_to 'IP Temple', home_index_path, class: "brand-logo" %>
           <a href="" data-target="mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
           <ul class="right hide-on-med-and-down">
-            <li>
-              <%= link_to 'All Questions', questions_path %>
-            </li>
-            <li>
-              <%= link_to 'Answered', questions_answered_path %>
-            </li>
-            <li>
-              <%= link_to 'Pending', questions_pending_path %>
-            </li>
+
+            <% if user_signed_in? %>
+              <li>
+                <%= link_to questions_path  do%>
+                  <i class="material-icons left">assignment</i>
+                  All Questions
+                <% end %>
+              </li>
+              <li>
+                <%= link_to questions_answered_path do %>
+                  <i class="material-icons left">assignment_turned_in</i>
+                  Answered
+                <% end %>
+              </li>
+              <li>
+                <%= link_to questions_pending_path do%>
+                  <i class="material-icons left">assignment_late</i>
+                  Pending
+                <% end %>
+              </li>
+              <li>
+                <%= link_to(destroy_user_session_path, method: :delete) do %>
+                <i class="material-icons left">exit_to_app</i>
+                Logout
+                <% end %>
+              </li>  
+            <% else %>
+              <li>
+                <%= link_to new_user_session_path do %>
+                  <i class="material-icons left">school</i>
+                  Teachers
+                <% end %>
+              </li>
+            <% end %>
+
           </ul>
         </div>
       </nav>
 
       <ul class="sidenav" id="mobile">
-        <li>
-          <%= link_to 'All Questions', questions_path %>
-        </li>
-        <li>
-          <%= link_to 'Answered', questions_answered_path %>
-        </li>
-        <li>
-          <%= link_to 'Pending', questions_pending_path %>
-        </li>
+        <% if user_signed_in? %>
+          <li id="user-welcome">
+            <h5>
+              <%= "Welcome, #{current_user.login}" %>
+            </h5>
+          </li>
+          <li>
+            <%= link_to questions_path  do%>
+              <i class="material-icons">assignment</i>
+              All Questions
+            <% end %>
+          </li>
+          <li>
+            <%= link_to questions_answered_path do %>
+              <i class="material-icons">assignment_turned_in</i>
+              Answered
+            <% end %>
+          </li>
+          <li>
+            <%= link_to questions_pending_path do%>
+              <i class="material-icons">assignment_late</i>
+              Pending
+            <% end %>
+          </li>
+          <li>
+            <%= link_to(destroy_user_session_path, method: :delete) do %>
+            <i class="material-icons">exit_to_app</i>
+            Logout
+            <% end %>
+          </li> 
+        <% else %>
+          <li>
+            <%= link_to new_user_session_path do %>
+              <i class="material-icons">school</i>
+              Teachers
+            <% end %>
+          </li>
+        <% end %>
       </ul>
-      </div></div>
 
       <div id="main">
         <div class="container">
