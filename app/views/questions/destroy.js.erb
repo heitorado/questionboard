@@ -1,0 +1,8 @@
+    $('#<%= params[:id] %>').find('.card').css('background-color', '#ff5252');
+
+    $('#<%= params[:id] %>').fadeOut(500, function() { 
+        $(this).remove();
+        M.toast({
+                html: "Deleted!",
+                });
+    });
