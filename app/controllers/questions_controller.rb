@@ -74,6 +74,7 @@ class QuestionsController < ApplicationController
 
   def answer
     @question.answered_at = Time.now
+    @question.user = current_user
     
     respond_to do |format|
       if @question.save
