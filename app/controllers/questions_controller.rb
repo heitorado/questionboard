@@ -1,5 +1,6 @@
 class QuestionsController < ApplicationController
   before_action :set_question, only: [:show, :edit, :update, :destroy, :answer]
+  before_action :authenticate_user!, except: [:new, :create]
 
   # GET /questions
   # GET /questions.json
@@ -68,11 +69,13 @@ class QuestionsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to questions_url, notice: 'Question was successfully destroyed.' }
       format.json { head :no_content }
+      format.js { }
     end
   end
 
   def answer
     @question.answered_at = Time.now
+    @question.user = current_user
     
     respond_to do |format|
       if @question.save

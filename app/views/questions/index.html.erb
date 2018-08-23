@@ -6,38 +6,5 @@
 
     <%= render partial: "questions/shared/cards", locals: { questions: @questions } %>
 
-    <table class="striped" id="questions-table">
-      <thead>
-        <tr>
-          <th>Text</th>
-          <th>Answered at</th>
-          <th>Answered by</th>
-          <th colspan="3" id="table-actions-header"></th>
-        </tr>
-      </thead>
-
-      <tbody>
-        <% @questions.each do |question| %>
-          <tr id=<%= "#{question.id}" %> >
-            <td><%= question.text %></td>
-            <td class="answered-at">
-              <% unless question.answered_at.nil? %>
-                <%= question.answered_at.to_date %>
-              <% else %>
-                <%= "Not answered yet!" %>
-              <% end %>
-            </td>
-            <td><%= question.user_id %></td>
-            <td><%= link_to 'Answer', answer_question_path(question), :remote => true %></td>
-            <td><%= link_to 'Edit', edit_question_path(question) %></td>
-            <td><%= link_to 'Destroy', question, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-
-    <br>
-
-    <%= link_to 'New Question', new_question_path %>
   </div>
 </div>

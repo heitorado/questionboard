@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
+  devise_for :users
+
+  root 'home#index'
+
   get 'home/index'
   get 'questions/answered' => 'questions#answered'
   get 'questions/pending'=> 'questions#pending'
-  resources :users
+  #resources :users
   resources :questions do
     member do
       get 'answer'

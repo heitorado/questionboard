@@ -5,8 +5,8 @@ ruby '2.5.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.1'
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+# Use postgres as the database for Active Record
+gem 'pg'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
@@ -38,11 +38,14 @@ gem 'jquery-rails'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
-#  Materialize Sass version for Rails Asset Pipeline http://materialize.labs.my/
+#  Flexible authentication solution for Rails with Warden.
+gem 'devise'
+
+# Materialize Sass version for Rails Asset Pipeline http://materialize.labs.my/
 gem 'materialize-sass', '~> 1.0.0.rc2'
 
 # Add Google Material Icons in your Rails projects easily. It is a library with +900 icons ;)
-gem 'material_icons' 
+gem 'material_icons'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-toastr'
