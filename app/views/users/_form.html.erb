@@ -1,4 +1,4 @@
-<%= form_with(model: user, local: true) do |form| %>
+<%= form_with(model: user, local: true) do |f| %>
   <% if user.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
@@ -11,22 +11,46 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
+  <div id="form-user-edit">
+    <div class="row">
+      <div class="input-field col s12 m6 offset-m3 ">
+        <i class="material-icons prefix">mode_edit</i>
+        <%= f.text_field :login, autofocus: true, autocomplete: "login", placeholder: "login" %>
+      </div>
+    </div>
 
-  <div class="field">
-    <%= form.label :login %>
-    <%= form.text_field :login %>
-  </div>
+    <div class="row">
+      <div class="input-field col s12 m6 offset-m3 ">
+        <i class="material-icons prefix">email</i>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "email" %>
+      </div>
+    </div>
 
-  <div class="field">
-    <%= form.label :assistance_year %>
-    <%= form.number_field :assistance_year %>
-  </div>
+    <div class="row">
+      <div class="input-field col s12 m6 offset-m3 ">
+        <i class="material-icons prefix">person</i>
+        <%= f.text_field :name, autofocus: true, autocomplete: "name", placeholder: "name" %>
+      </div>
+    </div>
 
-  <div class="actions">
-    <%= form.submit %>
+    <div class="row">
+      <div class="input-field col s12 m6 offset-m3 ">
+        <i class="material-icons prefix">perm_contact_calendar</i>
+        <%= f.text_field :assistance_year, autofocus: true, autocomplete: "assistance_year", placeholder: "assistance_year" %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="input-field col s12 m6 offset-m3 ">
+        <i class="material-icons prefix">lock</i>
+        <%= f.password_field :password, autocomplete: "current-password", placeholder: "password" %>
+      </div>
+    </div>
+
+    <div class="actions col s12 m12">
+      <button id="login-button" class="waves-effect waves-light btn-large waves-input-wrapper" type="submit" name="commit" value="Enter the Temple">
+        Update
+      </button>
+    </div>
   </div>
 <% end %>
