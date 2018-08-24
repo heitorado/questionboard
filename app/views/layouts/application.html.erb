@@ -21,6 +21,12 @@
 
             <% if user_signed_in? %>
               <li>
+                <%= link_to edit_user_path(current_user) do %>
+                <i class="material-icons left">person</i>
+                Edit Profile
+                <% end %>
+              </li> 
+              <li>
                 <%= link_to questions_path  do%>
                   <i class="material-icons left">assignment</i>
                   All Questions
@@ -63,6 +69,12 @@
             <h5>
               <%= "Welcome, #{current_user.login}" %>
             </h5>
+          </li>
+          <li>
+            <%= link_to edit_user_path(current_user) do%>
+              <i class="material-icons">person</i>
+              Edit Profile
+            <% end %>
           </li>
           <li>
             <%= link_to questions_path  do%>
