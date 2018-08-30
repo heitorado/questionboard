@@ -37,6 +37,8 @@ class QuestionsController < ApplicationController
 
     respond_to do |format|
       if @question.save
+        send_telegram_post_req(@question)
+
         format.html { redirect_to @question, notice: 'Question was successfully created.' }
         format.json { render :show, status: :created, location: @question }
         format.js
@@ -87,6 +89,25 @@ class QuestionsController < ApplicationController
   end
 
   private
+    # Send the message to the telegram bot so it notifies its subscribers real-time
+    def send_telegram_post_req(question)
+      require 'net/http'
+      require 'json'
+
+      begin
+          uri = URI('https://iptemplebot.herokuapp.com/notify')
+          http = Net::HTTP.new(uri.host, uri.port)
+          http.use_ssl = true
+          req = Net::HTTP::Post.new(uri.path, {'Content-Type' =>'application/json'})
+          req.body = { "msg" => question.text }.to_json
+          res = http.request(req)
+          # puts "response #{res.body}"
+          # puts JSON.parse(req.body)
+      rescue => e
+          puts "failed #{e}"
+      end
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_question
       @question = Question.find(params[:id])
