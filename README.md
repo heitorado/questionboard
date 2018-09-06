@@ -32,4 +32,5 @@ Currently I'm just an undergraduate student that loves teaching at the Introduct
 Feel free to contribute, send me your pull request and I'll be happy to learn more and improve this system!
 
 Made with ❤ by [Heitorado](github.com/heitorado)
+
 Telegram bot integration by [Valgueiro](github.com/valgueiro)
